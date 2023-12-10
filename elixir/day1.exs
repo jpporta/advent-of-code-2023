@@ -55,8 +55,10 @@ defmodule AOC.Day1 do
     values
     |> Enum.map(&Enum.join(&1))
     |> Enum.filter(&(&1 != ""))
-    |> Enum.map(&String.to_integer/1)
-    |> Enum.sum()
+    |> Enum.map(&String.to_integer(&1))
+    |> Enum.map(&IO.puts(&1))
+
+    # |> Enum.sum()
   end
 
   def part1 do
