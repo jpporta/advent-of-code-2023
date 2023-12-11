@@ -1,6 +1,6 @@
 defmodule AOC.Day1 do
   def get_input do
-    File.read!("input/day1.txt")
+    IO.read(:stdio, :all)
     |> String.split("\n")
   end
 
@@ -57,24 +57,24 @@ defmodule AOC.Day1 do
     |> Enum.filter(&(&1 != ""))
     |> Enum.map(&String.to_integer(&1))
     |> Enum.map(&IO.puts(&1))
-
-    # |> Enum.sum()
+    |> Enum.sum()
   end
 
-  def part1 do
-    get_input()
-    |> Enum.map(&[line_number(&1), line_number(String.reverse(&1))])
-    |> reduce_values()
-    |> IO.puts()
+  defmodule Part1 do
+    def run do
+      get_input()
+      |> Enum.map(&[line_number(&1), line_number(String.reverse(&1))])
+      |> reduce_values()
+      |> IO.puts()
+    end
   end
 
-  def part2 do
-    get_input()
-    |> Enum.map(&[line_number(&1, false), line_number(String.reverse(&1), true)])
-    |> reduce_values()
-    |> IO.puts()
+  defmodule Part2 do
+    def run do
+      get_input()
+      |> Enum.map(&[line_number(&1, false), line_number(String.reverse(&1), true)])
+      |> reduce_values()
+      |> IO.puts()
+    end
   end
 end
-
-AOC.Day1.part1()
-AOC.Day1.part2()
